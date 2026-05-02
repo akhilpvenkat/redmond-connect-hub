@@ -2,6 +2,14 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import heroImg from "@/assets/redmond-hero.jpg";
 import { SiteHeader, SiteFooter } from "@/components/SiteHeader";
+import { ContainerScroll } from "@/components/ContainerScroll";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -40,6 +48,15 @@ const featured = [
     to: "/civic",
     emoji: "🏛️",
   },
+] as const;
+
+const highlights = [
+  { title: "Marymoor Park", tag: "640 acres of trails, concerts & climbing", accent: "bg-sage" },
+  { title: "Redmond Saturday Market", tag: "May–October on Bear Creek Pkwy", accent: "bg-rose" },
+  { title: "Downtown Park", tag: "Splash pad, lawns & live music", accent: "bg-primary text-primary-foreground" },
+  { title: "Sammamish River Trail", tag: "10 miles of paved riverside path", accent: "bg-crimson text-crimson-foreground" },
+  { title: "Redmond Library", tag: "Storytime, makerspace & free wifi", accent: "bg-sage" },
+  { title: "2 Line Light Rail", tag: "Now connecting Redmond to Bellevue", accent: "bg-rose" },
 ] as const;
 
 function Index() {
@@ -135,6 +152,46 @@ function Index() {
               </Link>
             ))}
           </div>
+        </section>
+
+        {/* Scrolling carousel showcase */}
+        <section className="mt-8">
+          <ContainerScroll
+            titleComponent={
+              <>
+                <span className="inline-flex items-center gap-2 rounded-full bg-rose px-3 py-1 text-xs font-semibold text-rose-foreground uppercase tracking-wide">
+                  Around town
+                </span>
+                <h2 className="mt-5 text-4xl md:text-6xl font-black text-primary leading-[0.95]">
+                  Places that make<br />
+                  <em className="not-italic font-display text-crimson">Redmond, Redmond.</em>
+                </h2>
+                <p className="mt-4 text-base md:text-lg text-foreground/70 max-w-2xl mx-auto">
+                  Scroll through a few neighborhood favorites — parks, markets, transit, and more.
+                </p>
+              </>
+            }
+          >
+            <div className="h-full w-full flex flex-col justify-center">
+              <Carousel opts={{ align: "start", loop: true }} className="w-full">
+                <CarouselContent className="-ml-4">
+                  {highlights.map((h) => (
+                    <CarouselItem key={h.title} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                      <div className={`rounded-2xl p-6 h-64 flex flex-col justify-between ${h.accent}`}>
+                        <div className="text-xs uppercase tracking-wide opacity-80">Redmond, WA</div>
+                        <div>
+                          <div className="font-display font-black text-2xl md:text-3xl">{h.title}</div>
+                          <div className="mt-2 text-sm opacity-90">{h.tag}</div>
+                        </div>
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="hidden md:flex left-2 bg-background" />
+                <CarouselNext className="hidden md:flex right-2 bg-background" />
+              </Carousel>
+            </div>
+          </ContainerScroll>
         </section>
 
         {/* Stat strip */}
