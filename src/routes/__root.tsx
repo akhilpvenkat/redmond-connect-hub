@@ -33,10 +33,14 @@ export const Route = createRootRoute({
       { name: "description", content: "Community resource hub for Redmond, Washington." },
       { name: "author", content: "Redmond Together" },
       { property: "og:title", content: "Redmond Together" },
-      { property: "og:description", content: "Community resource hub for Redmond, WA." },
+      { property: "og:description", content: "Community resource hub for Redmond, Washington." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Redmond Together" },
+      { name: "twitter:description", content: "Community resource hub for Redmond, Washington." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c0c3dd76-2124-49e3-acc5-5c1e62c8fc97/id-preview-91052dbe--bc4fa00b-bfe2-45c7-a51f-ae4fab6a0a9f.lovable.app-1777685016139.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c0c3dd76-2124-49e3-acc5-5c1e62c8fc97/id-preview-91052dbe--bc4fa00b-bfe2-45c7-a51f-ae4fab6a0a9f.lovable.app-1777685016139.png" },
     ],
     links: [
       {
